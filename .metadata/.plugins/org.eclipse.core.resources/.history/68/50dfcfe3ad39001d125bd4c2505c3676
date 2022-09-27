@@ -1,0 +1,5 @@
+package com.etiqa.assessment.entity;
+
+public class Student {
+
+}

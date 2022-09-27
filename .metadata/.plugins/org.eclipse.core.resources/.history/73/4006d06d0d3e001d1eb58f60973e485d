@@ -1,0 +1,79 @@
+package com.etiqa.assessment.controller;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
+
+import com.etiqa.assessment.entity.Student;
+
+public class RestClient {
+
+	private static final String GET_ALL_STUDENTS_API = "http://localhost:8080/etiqa/all";
+	private static final String GET_STUDENT_BY_ID = "http://localhost:8080/etiqa/student/{sid}";
+	private static final String CREATE_STUDENT_API = "http://localhost:8080/etiqa/save";
+	private static final String UPDATE_STUDENT_API = "http://localhost:8080/etiqa/update";
+	private static final String DELETE_STUDENT_API = "http://localhost:8080/etiqa/delete/{sid}";
+	
+	static RestTemplate restTemplate = new RestTemplate();
+	public static void main(String[] args) {
+		callGetAllStudentsAPI();
+		callGetStudentByIdAPI();
+		callCreateStudentAPI();
+		callUpdateStudentAPI();
+		callDeleteStudentAPI();
+
+	}
+	                     
+	private static void callGetAllStudentsAPI() {
+		HttpHeaders headers = new HttpHeaders();
+		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+		
+		HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
+		
+		ResponseEntity<String> result = restTemplate.exchange(GET_ALL_STUDENTS_API, HttpMethod.GET, entity, String.class);
+		
+		System.out.println(result);
+	}
+	
+	private static void callGetStudentByIdAPI() {
+		Map<String, Integer> param = new HashMap<>();
+		param.put("sid", 3);
+		
+		Student student = restTemplate.getForObject(GET_STUDENT_BY_ID, Student.class, param);
+		System.out.println(student.getName());
+		
+	}
+	
+	private static void callCreateStudentAPI() {
+		Student student = new Student();
+		student.setName("Shashidher");
+		
+		ResponseEntity<Student> std = restTemplate.postForEntity(CREATE_STUDENT_API, student, Student.class);
+		System.out.println(std.getBody());
+		
+	}
+	
+	private static void callUpdateStudentAPI() {
+		Student updateStudent = new Student();
+		updateStudent.setId(4L);
+//		updateStudent.setName("Shashi");
+		
+//		ResponseEntity<Student> std = restTemplate.postForEntity(UPDATE_STUDENT_API, updateStudent, Student.class);
+		restTemplate.put(UPDATE_STUDENT_API, updateStudent);
+			
+	}
+	
+	private static void callDeleteStudentAPI() {
+		Map<String, Integer> param = new HashMap<>();
+		param.put("sid", 4);
+		
+		restTemplate.delete(DELETE_STUDENT_API, param);
+	}
+}

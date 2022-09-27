@@ -1,0 +1,16 @@
+package com.etiqa.assessment.controller;
+
+public class RestClient {
+
+	private static final String GET_ALL_STUDENTS_API = "http://localhost:8080/etiqa/all";
+	private static final String GET_STUDENT_BY_ID = "http://localhost:8080/etiqa/student/{sid}";
+	private static final String CREATE_STUDENT_API = "http://localhost:8080/etiqa/save";
+	private static final String UPDATE_STUDENT_API = "http://localhost:8080/etiqa/update";
+	private static final String DELETE_STUDENT_API = "http://localhost:8080/etiqa/delete/{sid}";
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

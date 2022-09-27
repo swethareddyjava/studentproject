@@ -1,0 +1,5 @@
+package com.etiqa.assessment.service;
+
+public interface StudentServiceInterface {
+
+}

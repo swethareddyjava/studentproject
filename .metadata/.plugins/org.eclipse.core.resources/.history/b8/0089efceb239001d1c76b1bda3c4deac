@@ -1,0 +1,5 @@
+package com.etiqa.assessment.repos;
+
+public interface StudentCrudRepo {
+
+}

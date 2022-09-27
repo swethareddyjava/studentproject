@@ -1,0 +1,14 @@
+package com.etiqa.assessment.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.etiqa.assessment.repos.StudentCrudRepo;
+
+@Service
+public class StudentService implements StudentServiceInterface{
+
+	@Autowired
+	private StudentCrudRepo crudRepo;
+
+}

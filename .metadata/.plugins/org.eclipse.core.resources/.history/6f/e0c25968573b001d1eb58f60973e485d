@@ -1,0 +1,5 @@
+package com.etiqa.assessment.custom.exception;
+
+public class BusinessException {
+
+}

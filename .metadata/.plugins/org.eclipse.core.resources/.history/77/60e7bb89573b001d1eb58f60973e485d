@@ -1,0 +1,5 @@
+package com.etiqa.assessment.advice;
+
+public class MyControllerAdvice {
+
+}

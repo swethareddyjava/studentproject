@@ -1,0 +1,9 @@
+package com.etiqa.assessment.service;
+
+import com.etiqa.assessment.entity.Student;
+
+public interface StudentServiceInterface {
+
+	public Student addStudent(Student student);
+
+}

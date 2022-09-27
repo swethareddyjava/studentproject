@@ -1,0 +1,5 @@
+package com.etiqa.assessment.controller;
+
+public class RestClient {
+
+}

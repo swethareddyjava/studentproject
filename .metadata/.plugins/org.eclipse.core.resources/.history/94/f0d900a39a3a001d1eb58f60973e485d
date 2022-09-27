@@ -1,0 +1,29 @@
+package com.etiqa.assessment.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.etiqa.assessment.entity.Student;
+import com.etiqa.assessment.repos.StudentCrudRepo;
+
+@Service
+public class StudentService implements StudentServiceInterface{
+
+	@Autowired
+	private StudentCrudRepo crudRepo;
+
+	@Override
+	public Student addStudent(Student student) {
+		Student savedStudent = crudRepo.save(student);
+		return savedStudent;
+		
+	}
+
+	@Override
+	public List<Student> getAllStudents() {
+		return crudRepo.findAll();
+	}
+
+}
